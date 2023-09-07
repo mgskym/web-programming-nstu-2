@@ -74,7 +74,7 @@ def student():
 <body>
     <main>
         Овчинникова Юлия Андреевна, Маглицкий Михаил Андреевич
-        <img src="''' + url_for('static', filename='logo.jpg') + '''">
+        <img src="''' + url_for('static', filename='logo.png') + '''">
     </main>
 </body>
 </html>
