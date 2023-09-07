@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/menu")
 def menu():
-    return """
+    return '''
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -23,11 +23,11 @@ def menu():
     </footer>
 </body>
 </html>
-"""
+'''
 
 @app.route("/lab1")
 def lab1():
-    return """
+    return '''
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -44,10 +44,10 @@ def lab1():
         <br>
         <h2>Реализованные роуты</h2>
         <ul>
-            <li><a href="">/lab1/oak</a> - Дуб</li>
-            <li><a href="">/lab1/student</a> - Студент</li>
-            <li><a href="">/lab1/python</a> - Python</li>
-            <li><a href="">/lab1/</a> - </li>
+            <li><a href="http://127.0.0.1:5000/lab1/oak">/lab1/oak</a> - Дуб</li>
+            <li><a href="http://127.0.0.1:5000/lab1/student">/lab1/student</a> - Студент</li>
+            <li><a href="http://127.0.0.1:5000/lab1/python">/lab1/python</a> - Python</li>
+            <li><a href="http://127.0.0.1:5000/lab1>/lab1/</a> - </li>
         </ul>
     </main>
     <footer>
@@ -55,7 +55,7 @@ def lab1():
     </footer>
 </body>
 </html>
-"""
+'''
 @app.route("/")
 @app.route("/index")
 def start():
@@ -70,8 +70,16 @@ def oak():
     <link rel="stylesheet", type="text/css" href="''' + url_for('static', filename='lab1.css') + '''">
 </head>
 <body>
-    <h1>Дуб</h1>
-    <img src="''' + url_for('static', filename='oak.jpg') + '''">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 1
+    </header>
+    <main>
+        <h1>Дуб</h1>
+        <img src="''' + url_for('static', filename='oak.jpg') + '''">
+    </main>
+    <footer>
+        &copy; Маглицкий М, Овчинникова Ю, ФБИ-12, 3 курс, 2023
+    </footer>
 </body>
 </html>
 '''
@@ -82,11 +90,17 @@ def student():
 <!DOCTYPE html>
 <html lang="ru">
 <body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 1
+    </header>
     <main>
         Овчинникова Юлия Андреевна, Маглицкий Михаил Андреевич
         <br>
         <img style="width: 420px" src="''' + url_for('static', filename='logo.png') + '''">
     </main>
+    <footer>
+        &copy; Маглицкий М, Овчинникова Ю, ФБИ-12, 3 курс, 2023
+    </footer>
 </body>
 </html>
 '''
@@ -96,6 +110,9 @@ def python():
 <!DOCTYPE html>
 <html lang="ru">
 <body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 1
+    </header>
     <main>
         Высокоуровневый язык программирования общего назначения с динамической строгой типизацией
         и автоматическим управлением памятью, ориентированный на повышение производительности
@@ -107,6 +124,9 @@ def python():
         <br>
         <img style="width: 600px" src="''' + url_for('static', filename='pyt.jpg') + '''">
     </main>
+    <footer>
+        &copy; Маглицкий М, Овчинникова Ю, ФБИ-12, 3 курс, 2023
+    </footer>
 </bodfly>
 </html>
 '''
