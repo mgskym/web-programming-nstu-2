@@ -9,6 +9,7 @@ body {
 
 p {
     max-width: 800px;
+    margin-top: 50px;
 }
 
 header {
@@ -25,4 +26,22 @@ main {
 footer {
     padding: 24px;
     background-color: rgb(211, 211, 211);
+    margin-top: 560px;
+}
+a {
+    outline: none;
+    text-decoration: none;
+    color: #0f7afc;
+    border-bottom: 1px solid;
+    border-bottom-color: rgba(15, 122, 252, 0.2);
+}
+a:hover {
+    text-decoration: none;
+    color: #cf0000;
+    border-bottom-color: rgba(208, 64, 0, 0.2);
+}
+a:visited {
+    text-decoration: none;
+    color: #800080;
+    border-bottom-color: rgba(128, 0, 128, 0.2);
 }
