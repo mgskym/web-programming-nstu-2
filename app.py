@@ -50,7 +50,7 @@ def lab1():
             <li><a href="http://127.0.0.1:5000/lab1/oak">/lab1/oak</a> - Дуб</li>
             <li><a href="http://127.0.0.1:5000/lab1/student">/lab1/student</a> - Студент</li>
             <li><a href="http://127.0.0.1:5000/lab1/python">/lab1/python</a> - Python</li>
-            <li><a href="http://127.0.0.1:5000/lab1/stress>/lab1/stress</a> - Стресс</li>
+            <li><a href="http://127.0.0.1:5000/lab1/stress">/lab1/stress</a> - Стресс</li>
         </ul>
     </main>
     <footer>
