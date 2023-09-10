@@ -1,20 +1,22 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Calibri';
+    font-family: 'Stem';
+    letter-spacing: 0.8px;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 26px;
     color: #333333;
+    padding-bottom: 72px;
 }
 
 p {
     max-width: 800px;
-    margin-top: 50px;
+    margin-top: 12px;
 }
 
 h1 {
-    font-size: 32px;
-    line-height: 48px;
+    font-size: 42px;
+    line-height: 56px;
 }
 
 h2 {
@@ -24,7 +26,7 @@ h2 {
 
 header {
     padding: 24px;
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(199, 229, 212);
 }
 
 main {
@@ -35,8 +37,11 @@ main {
 
 footer {
     padding: 24px;
-    background-color: rgb(211, 211, 211);
-    margin-top: 560px;
+    background-color: rgb(199, 229, 212);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 a {
     outline: none;
@@ -54,4 +59,15 @@ a:visited {
     text-decoration: none;
     color: #800080;
     border-bottom-color: rgba(128, 0, 128, 0.2);
+}
+
+.btn {
+    border-radius: 12px;
+    color: white;
+    background-color: rgb(17, 187, 91);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+    padding-left: 12px;
+    border: 0;
 }
