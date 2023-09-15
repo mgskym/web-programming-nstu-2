@@ -7,12 +7,12 @@ def menu():
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Маглицкий М, Овчинникова Ю</title>
+    <title>НГТУ, ФБ, Лабораторные работы</title>
     <link rel="stylesheet", type="text/css" href="''' + url_for('static', filename='lab1.css') + '''">
 </head>
 <body>
     <header>
-        НГТУ, ФБ, Лабораторная работа 1
+        НГТУ, ФБ, WEB-программирование, часть 2. Список лабораторных
     </header>
     <main>
     <h1>Меню</h1>
