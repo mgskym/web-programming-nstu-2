@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Овчинникова, Маглицкий. Лабораторная работа {{lab_number}}</title>
+    <title>
+        Овчинникова, Маглицкий. Лабораторная работа {{lab_number}}
+        {% if name %}
+            {{ name }}. Лабораторная работа {{lab_number}}
+        {% else %}
+            Анонимус. Лабораторная работа {{lab_number}}
+        {% endif %}
+    </title>
     <link rel="stylesheet" href="{{ cssPath }}">
 </head>
 <body>
-    <header>WEB-программирование, часть 2. Лабораторная работа {{lab_number}}</header>
+    <header>
+        WEB-программирование, часть 2. {% if lab_number %}Лабораторная работа {{lab_number}}{% endif %}
+    </header>
 
     <main>
         5 + 2 = {{5+2}}<br>
@@ -17,7 +26,23 @@
     </main>
 
     <footer>
-        &copy; {{ name }}, ФБИ-12, 3 курс, 2023
+        &copy;
+        {% if name %}
+            {{ name }},
+        {% else %}
+            Анонимус,
+        {% endif %}
+        {% if group %}
+            {{ group }},
+        {% else %}
+            Неизвестная группа,
+        {% endif %}
+        {% if course %}
+            {{ course }} курс,
+        {% else %}
+            Неизвестный курс,
+        {% endif %}
+        2023
     </footer>
 </body>
 </html>
