@@ -5,7 +5,8 @@ app = Flask(__name__)
 def example():
     lab_number = '2'
     name = 'Овчинникова Юля, Маглицкий Михаил'
-    return render_template('example.html', name=name, lab_number=lab_number)
+    cssPath = url_for('static', filename='lab1.css')
+    return render_template('example.html', name=name, lab_number=lab_number, cssPath=cssPath)
 
 @app.route("/menu")
 def menu():
