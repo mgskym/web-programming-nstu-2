@@ -3,7 +3,8 @@ app = Flask(__name__)
 
 @app.route("/lab2/example")
 def example():
-    return render_template('example.html')
+    name = 'Овчинникова Юля, Маглицкий Михаил'
+    return render_template('example.html', name=name)
 
 @app.route("/menu")
 def menu():
