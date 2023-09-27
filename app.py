@@ -15,7 +15,21 @@ def example():
         {'name': 'мандарины', 'price': 95},
         {'name': 'манго', 'price': 321}
     ]
-    return render_template('example.html', name=name, lab_number=lab_number, cssPath=cssPath, group=group, course=course, fruits=fruits)
+
+    books = [
+        {'author': 'Анджей Сапковский', 'name': 'Последнее желание', 'genre': 'Эпическое фентези', 'pages': 645},
+        {'author': 'Джон Рональд Руэл Толкин', 'name': 'Властелин колец', 'genre': 'Роман-эпопея', 'pages': 1900},
+        {'author': ' Джордж Р. Р. Мартин', 'name': 'Игра Престолов', 'genre': 'Фэнтези', 'pages': 1495},
+        {'author': 'Стивен Кинг', 'name': 'Зелёная миля', 'genre': 'Мистика', 'pages': 735},
+        {'author': 'Маргарет Митчелл', 'name': 'Унесённые ветром', 'genre': 'Роман', 'pages': 906},
+        {'author': 'Антон Павлович Чехов', 'name': 'Вишнёвый сад', 'genre': 'Комедия', 'pages': 305},
+        {'author': 'Дарья Донцова', 'name': 'Я очень хочу жить', 'genre': 'Иронический детектив', 'pages': 580},
+        {'author': 'Амброз Бирс', 'name': 'Словарь Сатаны', 'genre': 'Сатира', 'pages': 479},
+        {'author': 'Всеволод Михайлович Гаршин', 'name': 'Лягушка-путешественница', 'genre': 'Сказка', 'pages': 105},
+        {'author': 'Алан Милн', 'name': 'Винни-Пух', 'genre': 'Фикшн', 'pages': 261}
+    ]
+    return render_template('example.html', name=name, lab_number=lab_number, cssPath=cssPath,
+                           group=group, course=course, fruits=fruits, books=books)
 
 @app.route("/menu")
 def menu():
