@@ -8,7 +8,7 @@ def example():
     group = 'ФБИ-12'
     course = '3'
     cssPath = url_for('static', filename='lab1.css')
-    return render_template('example.html', name=name, lab_number=lab_number, cssPath=cssPath)
+    return render_template('example.html', name=name, lab_number=lab_number, cssPath=cssPath, group=group, course=course)
 
 @app.route("/menu")
 def menu():
