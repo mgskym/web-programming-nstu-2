@@ -8,7 +8,14 @@ def example():
     group = 'ФБИ-12'
     course = '3'
     cssPath = url_for('static', filename='lab1.css')
-    return render_template('example.html', name=name, lab_number=lab_number, cssPath=cssPath, group=group, course=course)
+    fruits = [
+        {'name': 'яблоки', 'price': 100},
+        {'name': 'грушы', 'price': 120},
+        {'name': 'апельсины', 'price': 80},
+        {'name': 'мандарины', 'price': 95},
+        {'name': 'манго', 'price': 321}
+    ]
+    return render_template('example.html', name=name, lab_number=lab_number, cssPath=cssPath, group=group, course=course, fruits=fruits)
 
 @app.route("/menu")
 def menu():
