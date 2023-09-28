@@ -55,7 +55,8 @@ def menu():
     <main>
     <h1>Меню</h1>
         <ul>
-            <li><a href="http://127.0.0.1:5000/lab1">Первая лабораторная</a></li>
+            <li><a href="/lab1">Первая лабораторная</a></li>
+            <li><a href="/lab2">Вторая лабораторная</a></li>
         </ul>
     </main>
     <footer>
