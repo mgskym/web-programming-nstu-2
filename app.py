@@ -35,6 +35,10 @@ def example():
     return render_template('example.html', name=name, lab_number=lab_number, cssPath=cssPath,
                            group=group, course=course, fruits=fruits, books=books)
 
+@app.route("/lab2/bands")
+def bands():
+    return render_template('bands.html')
+
 @app.route("/menu")
 def menu():
     return '''
