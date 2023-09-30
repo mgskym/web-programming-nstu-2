@@ -35,6 +35,10 @@ def example():
     return render_template('example.html', name=name, lab_number=lab_number, cssPath=cssPath,
                            group=group, course=course, fruits=fruits, books=books)
 
+@app.route("/lab2/bands")
+def bands():
+    return render_template('bands.html')
+
 @app.route("/menu")
 def menu():
     return '''
@@ -51,7 +55,8 @@ def menu():
     <main>
     <h1>Меню</h1>
         <ul>
-            <li><a href="http://127.0.0.1:5000/lab1">Первая лабораторная</a></li>
+            <li><a href="/lab1">Первая лабораторная</a></li>
+            <li><a href="/lab2">Вторая лабораторная</a></li>
         </ul>
     </main>
     <footer>
