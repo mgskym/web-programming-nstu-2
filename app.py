@@ -5,6 +5,22 @@ app = Flask(__name__)
 def lab2():
     return render_template('lab2.html')
 
+@app.route("/lab2/defend")
+def defend():
+    # 1
+    A = 3.1
+    B = 5.7
+    C = 12.8
+
+    if A < B and B < C:
+        A = A * 2
+        B = B * 2
+        C = C * 2
+        result = A, B, C
+    else:
+        result = A, B, C
+    return render_template('lab2defend.html', result = result)
+
 @app.route("/lab2/example")
 def example():
     lab_number = '2'
