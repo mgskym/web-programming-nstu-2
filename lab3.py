@@ -45,3 +45,28 @@ def pay():
 def success():
     return render_template('lab3pay.html')
     
+
+@lab3.route('/lab3/ticket')
+def ticket():
+    errors={}
+    user = request.args.get('user')
+    if user == '':
+         errors['user'] = 'Заполните поле'
+    age =  request.args.get('age')
+    if age == '':
+         errors['age'] = 'Заполните поле'
+    exit_point =  request.args.get('exit_point')
+    if exit_point == '':
+         errors['exit_point'] = 'Заполните поле'
+    destination =  request.args.get('destination')
+    if destination == '':
+         errors['destination'] = 'Заполните поле'
+    date =  request.args.get('date')
+    if date == '':
+         errors['date'] = 'Заполните поле'
+    return render_template('ticket.html',  user=user, age=age, exit_point=exit_point,destination=destination,date=date, errors=errors)
+
+
+#@lab3.route('/lab3/successticket')
+#def successticket():
+    #return render_template('lab3.successticket.html')
