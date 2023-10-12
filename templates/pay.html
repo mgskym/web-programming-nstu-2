@@ -3,35 +3,48 @@
 {% block lab %}Лабораторная работа 3{% endblock %}
 
 {% block main %}
-    <h1>Оплата</h1>
-
-    <div>
-        Сумма к оплате: {{price}}
-    </div>
-
-    <form action="/lab3/success">
-        <div>Номер банковской карты</div>
-        <label>
-            <input type="text" name="card" pattern="\d{16}">
-        </label>
-
-        <div>Имя держателя карты:</div>
-        <label>
-            <input type="text" name="name">
-        </label>
-
-        <div>Номер CVV:</div>
-        <label>
-            <input type="text" name="cvv" size="3" pattern="\d{3}">
-        </label>
+    {% if card and name and cvv %}
+        <h1>Спасибо, ваш заказ оплачен, ожидайте доставку</h1>
+        <a href="/lab3/order">Вернуться к заказам</a>
+    {% else %}
+        <h1>Оплата</h1>
 
         <div>
-            <button type="submit">Оплатить</button>
-        </div>
-        <div>
-            <a href="/lab3/order>"> Отказаться </a>
+            Сумма к оплате: {{price}}
         </div>
 
-    </form>
-    
+        <form>
+            <div class="label">Номер банковской карты</div>
+            <div>
+                <label>
+                    <input type="text" name="card" pattern="\d{16}" value="{{card or ''}}">
+                </label>
+                <span class="error" style="color: red;">{{errors.card}}</span>
+            </div>
+        
+            <div>Имя держателя карты:</div>
+            <div>
+                <label>
+                    <input type="text" name="name" value="{{name or ''}}">
+                </label>
+                <span class="error" style="color: red;">{{errors.name}}</span>
+            </div>
+
+            <div>Номер CVV:</div>
+            <div>
+                <label>
+                    <input type="text" name="cvv" size="3" pattern="\d{3}" value="{{cvv or ''}}">
+                </label>
+                <span class="error" style="color: red;">{{errors.cvv}}</span>
+            </div>
+            
+            <div>
+                <button type="submit">Оплатить</button>
+            </div>
+            <div>
+                <a href="/lab3/order"> Отказаться </a>
+            </div>
+
+        </form>
+        {% endif %}
     {% endblock %}
