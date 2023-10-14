@@ -1,5 +1,4 @@
 from flask import Blueprint, redirect, url_for
-#from flask import Flask
 lab1 = Blueprint('lab1', __name__)
 
 @lab1.route("/")

@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+import math
 lab3 = Blueprint('lab3', __name__)
 
 @lab3.route('/lab3/form1')
@@ -77,3 +78,49 @@ def ticket():
     return render_template('ticket.html',  user=user, age=age, ticket_type=ticket_type,
     exit_point=exit_point, destination=destination, shelf_type=shelf_type,
     baggage=baggage, date=date, errors=errors)
+
+@lab3.route('/lab3/defend')
+def defend():
+    x = request.args.get('x')
+    n = request.args.get('n')
+
+    result = 0
+    if n and x:
+        if int(n) > 0:
+            n = int(n)
+            x = float(x)
+
+            result = x
+
+            for i in range(n):
+                result += (((-1**i)*(x**(2*i+1)))/(math.factorial(2*i+1)))
+        else:
+            result = 'error'
+
+    return render_template('l3defend.html', x=x, n=n, result=result)
+
+@lab3.route('/lab3/defend2')
+def defend2():
+    a = request.args.get('a')
+    b = request.args.get('b')
+    c = request.args.get('c')
+    d = request.args.get('d')
+
+
+    result = 0
+    if a and b and c and d:
+        a = int(a)
+        b = int(b)
+        c = int(c)
+        d = int(d)
+
+        if a == b == c:
+            result = 4
+        elif a == b == d:
+            result = 3
+        elif a == c == d:
+            result = 2
+        else:
+            result = 1
+            
+    return render_template('l3defend2.html', a=a, b=b, c=c, d=d, result=result)
