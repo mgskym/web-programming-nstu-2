@@ -7,7 +7,7 @@
     <h2>Пожалуйста, авторизуйтесь</h2>
 
     {%if error%}
-        <span class="error">{{error}}</span>
+        <span class="error" style="color: red">{{error}}</span>
     {%endif%}
 
     <form method="POST">
@@ -15,11 +15,13 @@
         <label for="username">Пользователь:</label>
         <input type="text" id="username" name="username" 
         value="{{username or '' }}">
+        
     </div>
     <div>
         <label for="password">Пароль:</label>
         <input type="password" id="password" name="password" 
         value="{{password or '' }}">
+        
     </div>
     <div>
         <button type="submit">Войти</button>

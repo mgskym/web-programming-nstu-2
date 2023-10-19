@@ -25,4 +25,19 @@ def login():
     return render_template('login.html',error=error,
                            username=username, password=password)
 
+
+
+@lab4.route('/lab4/fridge', methods=['GET', 'POST'])
+def fridge(): 
+    errors = {}
+    if request.method =='GET':
+        return render_template('fridge.html')
     
+    temperature = request.form.get('temperature')
+
+    if temperature == '':
+        errors ['temperature']='Не задана температура'
+    return render_template('fridge.html', temperature=temperature, errors=errors)
+                        
+
+
