@@ -51,5 +51,46 @@ def fridge():
             msg = f'Установлена температура: {temperature}°С ❄️'
     return render_template('fridge.html', temperature=temperature, msg=msg)
                         
+@lab4.route('/lab4/seeds', methods=['GET', 'POST'])
+def seeds():
+    sale = ''
+    error = ''
+    total = 0
+    max_weight = 500
+    seed_types = {
+        'barley': 'ячмень',
+        'oats': 'овёс',
+        'wheat': 'пшеница',
+        'rye': 'рожь'
+    }
 
+    seed_prices = {
+        'barley': 12000,
+        'oats': 8500,
+        'wheat': 8700,
+        'rye': 14000
+    }
+
+    if request.method =='GET':
+        return render_template('seeds_order.html', error=error)
+    
+    seed = request.form.get('seed_type')
+    weight = request.form.get('weight')
+
+    if weight == '':
+        error = 'Не указан вес'
+    else:
+        weight = int(weight)
+        if weight > 0:
+            if weight > 50:
+                total = (seed_prices[seed] * weight) * 0.9
+                sale = f'Добавлена скидка 10% ({(seed_prices[seed] * weight) * 0.1} руб.) из-за веса более 50 тонн!'
+            elif weight > max_weight:
+                error = 'Такого объёма сейчас нет в наличии'
+            else:
+                total = seed_prices[seed] * weight
+        else:
+            error = 'Неверное значение веса'
+
+    return render_template('seeds_order.html', error=error, seed=seed_types[seed], weight=weight, total=total, sale=sale)
 
