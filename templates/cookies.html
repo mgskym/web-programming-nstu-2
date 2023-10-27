@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 {% block lab %}Лабораторная работа 4{% endblock %}
 
 {% block main %}
@@ -6,11 +8,11 @@
     <form method="post">
         <div>
             <label class ="label" for="color">Выберите цвет текста:</label>
-            <input type="color" id="color" name="color">
+            <input type="color" id="color" name="color" value="#333333">
         </div>
         <div>
             <label class ="label" for="background-color">Выберите цвет фона:</label>
-            <input type="color" id="background-color" name="background-color">
+            <input type="color" id="background-color" name="background-color" value="#FFFFFF">
         </div>
         <div>
             <label class ="label" for="font-size">Выберите размер шрифта:</label>
@@ -20,5 +22,6 @@
             <button type="submit">Применить</button><br>
             <span></span>
         </div>
-
     </form>
+
+{% endblock %}
