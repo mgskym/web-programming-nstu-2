@@ -96,13 +96,21 @@ def seeds():
 
 @lab4.route('/lab4/cookies', methods=['GET', 'POST'])
 def cookies():
-    resp = make_response(render_template('cookies.html'))
-
+    error = ''
+    resp = make_response(render_template('cookies.html', error=error))
     color = request.form.get('color')
     b_color = request.form.get('background-color')
     f_size = request.form.get('font-size')
     if color and b_color and f_size:
+        if color == b_color:
+            error = 'Цвет фона и цвет текста должен отличаться!'
+            return make_response(render_template('cookies.html', error=error))
         resp.set_cookie('color', color)
         resp.set_cookie('background-color', b_color)
         resp.set_cookie('font-size', f"{f_size}px")
     return resp
+
+
+@lab4.route('/lab4/defend', methods=['GET', 'POST'])
+def defend():
+    return render_template('lab4defend.html')
