@@ -15,14 +15,50 @@ def menu():
         НГТУ, ФБ, WEB-программирование, часть 2. Список лабораторных
     </header>
     <main>
-    <h1>Меню</h1>
-        <ul>
-            <li><a href="http://127.0.0.1:5000/lab1">Первая лабораторная</a></li>
-        </ul>
+    <h1>Защита лабы 2</h1>
     </main>
     <footer>
         &copy; Маглицкий М, Овчинникова Ю, ФБИ-12, 3 курс, 2023
     </footer>
+    <script>
+        // 1
+        let A = 3.12;
+        let B = 12.4;
+        let C = 18.1;
+
+        if (A < B && B < C) {
+            A *= 2
+            B *= 2
+            C *= 2
+            console.log(A, B, C)
+        }
+        else {
+            console.log(A, B, C)
+        };
+
+        //2
+        let N = 12;
+        let K = 6;
+
+        for (let i = 0; i < K; i++) {
+            console.log(N);
+        };
+
+        // 3
+        let M = 3;
+        let L = 2;
+
+        if (M >= 0 && L >= 0) {
+            let summ = 0;
+            for (let i = 1; i <= M; i++) {
+                summ += (i**L)
+            }
+            console.log(summ);
+        }
+        else {
+            console.log('Числа не положительные')
+        };
+    </script>
 </body>
 </html>
 '''
