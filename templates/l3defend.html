@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 3{% endblock %}
+
+{% block main %}
+
+    {% if n and x %}
+
+        <div>Результат:</div>
+        <div>{{ result }}</div>
+
+    {% else %}
+        <form>
+            <div>Число X:</div>
+            <input type="text" placeholder="Число X" name="x">
+
+            <div>Число N:</div>
+            <input type="number" placeholder="Число N" name="n"><br>
+            <button type="submit">Рассчитать</button>
+        </form>
+        
+    {% endif %}
+
+{% endblock %}

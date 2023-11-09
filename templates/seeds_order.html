@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 4. Группы{% endblock %}
+
+{% block main %}
+
+    {% if weight %}
+        <h2>Заказ успешно сформирован</h2>
+        <div>
+            <div>Вы заказали {{ seed }}.</div>
+            <div>Вес: {{ weight }} т.</div>
+            <div>Сумма к оплате: {{ total }} руб. <br><span style="color: green; font-size: 12px;">{{ sale }}</span></div>
+            <a href="/lab4/seeds">Вернуться на страницу заказа</a>
+        </div>
+    {% else %}
+        <h2>Заказ зерна</h2>
+        <form method="POST">
+            <div class="label">
+                Зерно
+            </div>
+            <select name="seed_type">
+                <option value="barley">Ячмень</option>
+                <option value="oats">Овёс</option>
+                <option value="wheat">Пшеница</option>
+                <option value="rye">Рожь</option>
+            </select>
+            <div class="label"><br>
+                Вес
+            </div>
+            <input type="number" name="weight" placeholder="Вес"
+                    value="{{weight or ''}} ">
+            <span style="color: red;">{{ error }}</span>
+            <div>
+                <button type="submit" style="margin-top: 20px;">Оформить заказ</button>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}

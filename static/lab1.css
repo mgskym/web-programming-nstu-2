@@ -70,4 +70,30 @@ a:visited {
     padding-right: 12px;
     padding-left: 12px;
     border: 0;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Stem';
+}
+
+button {
+    border-radius: 12px;
+    color: white;
+    background-color: rgb(17, 187, 91);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 12px;
+    padding-left: 12px;
+    border: 0;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Stem';
+}
+
+button:hover {
+    background-color: rgb(15, 144, 71);
+}
+
+.label {
+    color: #676767;
+    font-size: 14px;
 }

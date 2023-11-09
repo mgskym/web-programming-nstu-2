@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 3{% endblock %}
+
+{% block main %}
+
+    {% if a and b and c and d %}
+
+        <div>Результат:</div>
+        <div>{{ result }}</div>
+
+    {% else %}
+        <form>
+            <div>Число A:</div>
+            <input type="number" placeholder="Число A" name="a">
+
+            <div>Число B:</div>
+            <input type="number" placeholder="Число B" name="b"><br>
+
+            <div>Число C:</div>
+            <input type="number" placeholder="Число C" name="c"><br>
+
+            <div>Число D:</div>
+            <input type="number" placeholder="Число D" name="d"><br>
+
+            <button type="submit">Рассчитать</button>
+        </form>
+        
+    {% endif %}
+
+{% endblock %}

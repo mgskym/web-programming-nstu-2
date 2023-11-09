@@ -1,81 +1,14 @@
-from flask import Flask, redirect, url_for
-from lab1 import lab1
-from lab2 import lab2
-from lab3 import lab3
-from lab4 import lab4
-from lab5 import lab5
+from flask import Blueprint, redirect, url_for
+lab1 = Blueprint('lab1', __name__)
 
-app = Flask(__name__)
-app.register_blueprint(lab1)
-app.register_blueprint(lab2)
-app.register_blueprint(lab3)
-app.register_blueprint(lab4)
-app.register_blueprint(lab5)
+@lab1.route("/")
+@lab1.route("/index")
+def start():
+    return redirect("/menu",code=302)
 
-@app.route("/menu")
-def menu():
-    return '''
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <title>НГТУ, ФБ, Лабораторные работы</title>
-    <link rel="stylesheet", type="text/css" href="''' + url_for('static', filename='lab1.css') + '''">
-</head>
-<body>
-    <header>
-        НГТУ, ФБ, WEB-программирование, часть 2. Список лабораторных
-    </header>
-    <main>
-    <h1>Защита лабы 2</h1>
-    </main>
-    <footer>
-        &copy; Маглицкий М, Овчинникова Ю, ФБИ-12, 3 курс, 2023
-    </footer>
-    <script>
-        // 1
-        let A = 3.12;
-        let B = 12.4;
-        let C = 18.1;
 
-        if (A < B && B < C) {
-            A *= 2
-            B *= 2
-            C *= 2
-            console.log(A, B, C)
-        }
-        else {
-            console.log(A, B, C)
-        };
-
-        //2
-        let N = 12;
-        let K = 6;
-
-        for (let i = 0; i < K; i++) {
-            console.log(N);
-        };
-
-        // 3
-        let M = 3;
-        let L = 2;
-
-        if (M >= 0 && L >= 0) {
-            let summ = 0;
-            for (let i = 1; i <= M; i++) {
-                summ += (i**L)
-            }
-            console.log(summ);
-        }
-        else {
-            console.log('Числа не положительные')
-        };
-    </script>
-</body>
-</html>
-'''
-
-@app.route("/lab1")
-def lab1():
+@lab1.route("/lab1")
+def lab():
     return '''
 <!DOCTYPE html>
 <html lang="ru">
@@ -91,14 +24,14 @@ def lab1():
         <h1>Лабораторная работа №1</h1>
         <p>Flask — фреймворк для создания веб-приложений на языке программирования Python, использующий набор инструментов Werkzeug, а также шаблонизатор Jinja2. Относится к категории так называемых микрофреймворков — минималистичных каркасов веб-приложений, сознательно предоставляющих лишь самые базовые возможности.</p>
         <br>
-        <a class="btn" style="color: #fff; margin-bottom: 56px" href="http://127.0.0.1:5000/menu">Меню</a>
+        <a class="btn" style="color: #fff; margin-bottom: 56px" href="/menu">Меню</a>
         <br>
         <h2>Реализованные роуты</h2>
         <ul>
-            <li><a href="http://127.0.0.1:5000/lab1/oak">/lab1/oak</a> - Дуб</li>
-            <li><a href="http://127.0.0.1:5000/lab1/student">/lab1/student</a> - Студент</li>
-            <li><a href="http://127.0.0.1:5000/lab1/python">/lab1/python</a> - Python</li>
-            <li><a href="http://127.0.0.1:5000/lab1/stress">/lab1/stress</a> - Стресс</li>
+            <li><a href="/lab1/oak">/lab1/oak</a> - Дуб</li>
+            <li><a href="/lab1/student">/lab1/student</a> - Студент</li>
+            <li><a href="/lab1/python">/lab1/python</a> - Python</li>
+            <li><a href="/lab1/stress">/lab1/stress</a> - Стресс</li>
         </ul>
     </main>
     <footer>
@@ -107,12 +40,8 @@ def lab1():
 </body>
 </html>
 '''
-@app.route("/")
-@app.route("/index")
-def start():
-    return redirect("/menu",code=302)
 
-@app.route('/lab1/oak')
+@lab1.route('/lab1/oak')
 def oak():
     return '''
 <!DOCTYPE html>
@@ -135,7 +64,8 @@ def oak():
 </html>
 '''
 
-@app.route("/lab1/student")
+
+@lab1.route("/lab1/student")
 def student():
     return '''
 <!DOCTYPE html>
@@ -158,7 +88,9 @@ def student():
 </body>
 </html>
 '''
-@app.route("/lab1/python")
+
+
+@lab1.route("/lab1/python")
 def python():
     return '''
 <!DOCTYPE html>
@@ -190,7 +122,8 @@ def python():
 </html>
 '''
 
-@app.route("/lab1/stress")
+
+@lab1.route("/lab1/stress")
 def stress():
     return '''
 <!DOCTYPE html>
@@ -237,6 +170,3 @@ def stress():
 </body>
 </html>
 '''
-
-
-
