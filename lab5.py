@@ -4,6 +4,8 @@ import psycopg2
 
 lab5 = Blueprint('lab5', __name__)
 
+
+
 def dBConnect():
     conn = psycopg2.connect(
         host="127.0.0.1",
@@ -75,7 +77,7 @@ def registerPage():
     hashPassword = generate_password_hash(password)
     conn=dBConnect()
     cur=conn.cursor()
-    cur.execute(f"SELECT username From users where username='{username}';")
+    cur.execute(f"SELECT username From users where username= %s;", (username))
 
     if cur.fetchone() is not None:
         errors = 'the user already exists'
@@ -84,7 +86,7 @@ def registerPage():
         cur.close()
         return render_template('register.html', errors=errors)
 
-    cur.execute(f"INSERT INTO users (username, password) VALUES ('{username}','{hashPassword}');")
+    cur.execute(f"INSERT INTO users (username, password) VALUES (%s, %s);", (username, hashPassword))
     conn.commit()
     conn.close()
     cur.close()
@@ -110,7 +112,7 @@ def loginPage():
     conn=dBConnect()
     cur=conn.cursor()
 
-    cur.execute(f"SELECT id, password From users where username='{username}';")
+    cur.execute(f"SELECT id, password From users where username = '{username}';")
     result = cur.fetchone()
 
     if result is None:
@@ -121,6 +123,7 @@ def loginPage():
         return render_template('login.html', errors=errors)
 
     userID, hashPassword = result
+    
 
     if check_password_hash(hashPassword, password):
             session['id'] = userID
@@ -135,10 +138,6 @@ def loginPage():
 
 
 @lab5.route('/lab5/new_article', methods=['GET', 'POST'])
-
-
- 
-
 def createArticle():
     errors = []
     userID = session.get("id")
@@ -158,7 +157,8 @@ def createArticle():
 
             conn = dBConnect()
             cur = conn.cursor()
-            cur.execute(f"INSERT INTO articles(user_id,title, article_text) VALUES ({userID}, '{title}', '{text_article}') RETURNING id")
+            is_public = request.form.get('publish')
+            cur.execute(f"INSERT INTO articles(user_id, title, article_text, is_public) VALUES (%s, %s, %s, %s) RETURNING id", (userID, title, text_article, is_public))
 
         
             new_article_id = cur.fetchone()[0]
@@ -167,3 +167,60 @@ def createArticle():
             return redirect(f"/lab5/articles/{new_article_id}")
 
         return redirect ("/lab5/login")
+
+@lab5.route("/lab5/articles/<string:article_id>")
+def gerArticle(article_id):
+    userID = session.get("id")
+
+    if userID is not None:
+        conn = dBConnect()
+        cur = conn.cursor()
+
+        cur.execute(f"SELECT title, article_text FROM articles WHERE id = {article_id}")
+        #  and user_id = %s
+        articleBody = cur.fetchone()
+
+        dBClose(cur, conn)
+
+        if articleBody is None:
+            return "Not found!"
+
+        text = articleBody[1].splitlines()
+
+        return render_template("articleN.html", article_text=text,
+        article_title =articleBody[0], username=session.get("username"))
+
+@lab5.route("/lab5/article_list")
+def getArticleList():
+    userID = session.get("id")
+    username = session.get("username")
+    articles_list = "Нет статей"
+    if userID is not None:
+        conn = dBConnect()
+        cur = conn.cursor()
+        
+        cur.execute(f"SELECT id, title FROM articles WHERE user_id = {userID}")
+        articles_list = cur.fetchall()
+
+    return render_template("article_list.html", articles_list=articles_list, username=username)
+
+
+@lab5.route("/lab5/logout")
+def logout():
+    session.clear()
+    return redirect("/lab5/login")
+
+
+@lab5.route("/lab5/article_publish_list")
+def getPublishList():
+    userID = session.get("id")
+    article_published_list = "Нет опубликованных статей"
+
+    conn = dBConnect()
+    cur = conn.cursor()
+
+    cur.execute(f"SELECT id, title, user_id FROM articles WHERE is_public = true")
+    article_published_list = cur.fetchall()
+
+    return render_template("article_published_list.html", article_published_list=article_published_list)
+

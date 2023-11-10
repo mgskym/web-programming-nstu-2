@@ -38,21 +38,8 @@
     <a style="background-color: red;" href="/lab5/logout" >Выход</a>
 </nav>
 <div>
-    <h1>Новая заметка</h1>
-
-    <form method="POST">
-
-        <input name="title_article" type="text" placeholder="Название статьи"><br>
-
-        <textarea style="width: 100%;" name="text_article" type="text" placeholder="Текст статьи" rows="20">
-
-        </textarea><br>
-        Опубликовать статью?
-        <select name="publish" id="publish">
-            <option value=True>Да</option>
-            <option value=False>Нет</option>
-        </select>
-        <input type="submit" value="Apply"/><br>
-    </form>
-
+    <h1>{{ article_title }}</h1>
+    {% for paragraph in article_text %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
 </div>

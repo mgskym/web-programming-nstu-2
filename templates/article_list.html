@@ -37,22 +37,14 @@
     <span>{{username}}</span>
     <a style="background-color: red;" href="/lab5/logout" >Выход</a>
 </nav>
+<h1>Список статей пользователя {{ username }}</h1>
 <div>
-    <h1>Новая заметка</h1>
-
-    <form method="POST">
-
-        <input name="title_article" type="text" placeholder="Название статьи"><br>
-
-        <textarea style="width: 100%;" name="text_article" type="text" placeholder="Текст статьи" rows="20">
-
-        </textarea><br>
-        Опубликовать статью?
-        <select name="publish" id="publish">
-            <option value=True>Да</option>
-            <option value=False>Нет</option>
-        </select>
-        <input type="submit" value="Apply"/><br>
-    </form>
-
+    <ul>
+        {% for article in articles_list %}
+        <li>
+            <h2 style="margin-top: 24px; margin-bottom: 0px;">Заголовок: {{  article[1] }}</h2>
+            <br>ID: {{ article[0] }}
+        </li>
+        {% endfor %}
+    </ul>
 </div>
