@@ -1,0 +1,45 @@
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+ 
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(118, 218, 135);
+            padding: 10px;
+        }
+ 
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #333333;
+        }
+    </style>
+ </head>
+<nav>
+    <a href="/lab5/article_list">Посмотреть записи</a>
+    <a href="/lab5/article_publish_list">Опубликованные записи</a>
+    <a href="/lab5/new_article" >Создать заметку</a>
+    <a href="/lab5/login">Логин</a>
+    <a href="/lab5/register" >Регистрация</a>
+    <span>{{username}}</span>
+    <a style="background-color: red;" href="/lab5/logout" >Выход</a>
+</nav>
+<div>
+    <h1>{{ article_title }}</h1>
+    {% for paragraph in article_text %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+</div>
