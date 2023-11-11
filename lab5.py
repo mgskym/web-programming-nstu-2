@@ -12,7 +12,7 @@ def dBConnect():
         database = "knowledge_base",
         user = "julia_knowledge_base",
         password = "123",
-        port = 5432
+        port = '5432'
 )
     return conn;
 
