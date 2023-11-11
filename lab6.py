@@ -91,5 +91,17 @@ def logout():
     logout_user()
     return redirect("/lab6/login")
 
+@lab6.route("/lab6/new_article")
+@login_required
+def createArticle():
+    errors = []
+    if request.method=='GET':
+            return render_template('articleN.html')
+    
+    if request.method=='POST':
+            text_article = request.form.get("text_article")
+            title = request.form.get("title_article")
+
+            
 
 
