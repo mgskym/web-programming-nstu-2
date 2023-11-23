@@ -42,9 +42,10 @@
     <ul>
         {% for article in article_published_list %}
         <li>
-            <h2 style="margin-top: 24px; margin-bottom: 0px;">Заголовок: {{  article[1] }}</h2>
-            <br>ID: {{ article[0] }},
-            <br>ID Автора: {{ article[2] }}
+            <a href="/lab6/articles/{{ article.id }}"><h2 style="margin-top: 24px; margin-bottom: 0px;">{{  article.article_title }}</h2></a>
+            <br>ID: {{ article.id }},
+            <br>ID Автора: {{ article.user_id }}
+            <br>
         </li>
         {% endfor %}
     </ul>
