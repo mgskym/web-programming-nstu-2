@@ -1,11 +1,19 @@
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask import Blueprint, render_template, request, make_response, redirect
+from flask import Blueprint, render_template, request, make_response, redirect, session
 import psycopg2
 from Db import db
 from Db.models import users, articles
 from flask_login import login_user, login_required, current_user, logout_user
 
 lab6 = Blueprint('lab6', __name__)
+
+@lab6.route("/lab6")
+def mainpage():
+    username = (users.query.filter_by(id=current_user.id).first()).username
+    if username is None:
+        username = 'Аноним'
+
+    return render_template("lab6.html", username = username)
 
 @lab6.route("/lab6/check")
 def main():
@@ -68,7 +76,7 @@ def login():
         if my_user is not None:
             if check_password_hash(my_user.password, password_form):
                 login_user(my_user, remember=False)
-                return redirect("/lab6/articles")
+                return redirect("/lab6")
             else:
                 errors = 'Неверный пароль!'
                 return render_template("login.html", errors=errors)
@@ -91,16 +99,43 @@ def logout():
     logout_user()
     return redirect("/lab6/login")
 
-@lab6.route("/lab6/new_article")
+@lab6.route("/lab6/new_article", methods=['GET', 'POST'])
 @login_required
 def createArticle():
-    errors = []
+    errors = ''
     if request.method=='GET':
-            return render_template('articleN.html')
-    
-    if request.method=='POST':
-            text_article = request.form.get("text_article")
-            title = request.form.get("title_article")
+        return render_template('note.html')
+    else:
+        userID = current_user.id
+        text_article = request.form.get("text_article")
+        title = request.form.get("title_article")
+
+        if text_article == '' or title == '':
+            errors =  "Заполните все поля!"
+            return render_template('note.html', errors=errors)
+        else:
+            is_public = request.form.get('publish')
+            if is_public == 'False':
+                is_public = None
+            else:
+                is_public = True
+            newArticle = articles(user_id = userID, article_title = title, article_text=text_article, is_public=is_public)
+
+            db.session.add(newArticle)
+            db.session.commit()
+            
+
+    return redirect('/lab6')
+
+@lab6.route("/lab6/article_list")
+def article_list():
+    username = (users.query.filter_by(id=current_user.id).first()).username
+    articles_list = articles.query.filter_by(user_id=current_user.id).all()
+
+    return render_template("article_list.html", username=username, articles_list=articles_list)
+
+
+
 
             
 
