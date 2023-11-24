@@ -20,7 +20,7 @@ app.register_blueprint(lab5)
 app.secret_key = '123'
 user_db = "michael_knowledge_base_orm"
 host_ip = "127.0.0.1"
-host_port = "5432"
+host_port = "65223"
 database_name = "knowledge_base_for_michael_orm"
 password = "123"
 
