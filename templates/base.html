@@ -13,7 +13,8 @@
                 color: {{request.cookies.get('color')}};
             }
         </style>
-{% endif %}
+    {% endif %}
+    {% block script %}{% endblock %}
 </head>
 <body>
     <header>

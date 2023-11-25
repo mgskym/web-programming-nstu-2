@@ -38,4 +38,6 @@ def load_users(user_id):
 
 app.register_blueprint(lab6)
 
+app.register_blueprint(lab7)
+
 
