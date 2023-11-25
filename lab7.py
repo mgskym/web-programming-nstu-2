@@ -22,7 +22,7 @@ def api():
     if data['method'] == 'get-price':
         return get_price(data['params'])
     if data['method'] == 'pay':
-        retuen pay(data['params'])
+        return pay(data['params'])
     abort(400)
 
 def get_price(params):
