@@ -6,8 +6,8 @@ from lab4 import lab4
 from lab5 import lab5
 from lab6 import lab6
 from flask_sqlalchemy import SQLAlchemy
-from Db import db
-from Db.models import users
+from db import db
+from db.models import users
 from flask_login import LoginManager
 
 app = Flask(__name__)
