@@ -6,8 +6,8 @@ from lab4 import lab4
 from lab5 import lab5
 from lab6 import lab6
 from flask_sqlalchemy import SQLAlchemy
-from Db import db
-from Db.models import users
+from db import db
+from db.models import users
 from flask_login import LoginManager
 
 app = Flask(__name__)
@@ -37,5 +37,7 @@ def load_users(user_id):
     return users.query.get(int(user_id))
 
 app.register_blueprint(lab6)
+
+app.register_blueprint(lab7)
 
 
