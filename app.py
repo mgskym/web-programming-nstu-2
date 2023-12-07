@@ -5,6 +5,7 @@ from lab3 import lab3
 from lab4 import lab4
 from lab5 import lab5
 from lab6 import lab6
+from lab7 import lab7
 from flask_sqlalchemy import SQLAlchemy
 from db import db
 from db.models import users
@@ -19,8 +20,8 @@ app.register_blueprint(lab5)
 
 app.secret_key = '123'
 user_db = "michael_knowledge_base_orm"
-host_ip = "127.0.0.1"
-host_port = "65223"
+host_ip = "localhost"
+host_port = "5432"
 database_name = "knowledge_base_for_michael_orm"
 password = "123"
 

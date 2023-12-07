@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% block lab %}Лабораторная работа №7{% endblock }
+{% block lab %}Лабораторная работа №7{% endblock %}
 
 {% block script %}
-<script src="{{ url_fot('static', filename='lab7/drink.js') }}"></script>
+<script src="{{ url_for('static', filename='lab7/drink.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -30,12 +30,19 @@
         <button onclick="getPrice()">Рассчитать цену</button>
     </div>
 
-    <div id="price"></div>
+    <div id="price" style="margin-top: 16px;"></div>
 
-    <div>
-        <button type="button">Заказать</button>
+    <div id="pay" style="display: none; margin-top: 16px;">
+        <label>Номер карты<br>
+            <input type="text" maxlength="16" name = "card_number"><br>
+        </label>
+        <label>CVV<br>
+            <input type="text" maxlength="3" name = "cvv"><br>
+        </label>
     </div>
-
-
-
+    <div id="pay_result" style="display: none;"></div>
+    <div id="error" style="display: none;"></div>
+    <div>
+        <button onclick="Pay()" type="button" id="order" style="display: none; margin-top: 16px;">Заказать</button>
+    </div>
 {% endblock %}
