@@ -23,6 +23,8 @@ def api():
         return get_price(data['params'])
     if data['method'] == 'pay':
         return pay(data['params'])
+    if data['method'] == 'refund':
+        return refund(data['params'])
     abort(400)
 
 def get_price(params):
@@ -58,4 +60,9 @@ def pay(params):
     
     price = calculate_price(params)
     return {"result": f'С карты {card_num} списано {price} руб.', "error": None}
+
+def refund(params):
+    card_num = params['card_num']
+    price = calculate_price(params)
+    return {"result": f'На карту {card_num} возвращено {price} руб.', "error": None}
     

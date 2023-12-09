@@ -223,4 +223,3 @@ def getPublishList():
     article_published_list = cur.fetchall()
 
     return render_template("article_published_list.html", article_published_list=article_published_list)
-
