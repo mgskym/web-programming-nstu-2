@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная 9{% endblock %}
+
+{% block main %}
+<h1>Дорогая {{ recipient_name }}, поздравляю тебя с новым годом!</h1>
+{% if recipient_gender == 'мужской' %}
+        <p style="font-size: 32px;">С Новым Годом, {{ recipient_name }}! Желаю быть счастливым в новом году. С наилучшими пожеланиями, {{ sender_name }}.</p>
+    {% else %}
+        <p style="font-size: 32px;">С Новым Годом, {{ recipient_name }}! Желаю быть счастливой в новом году. С наилучшими пожеланиями, {{ sender_name }}.</p>
+    {% endif %}
+</div>
+<img src="https://cdn.otkritkiok.ru/posts/big/kartinka-s-novym-godom-odnoklassnikam-62127.gif">
+{%endblock%}
