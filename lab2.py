@@ -80,6 +80,7 @@ def menu():
             <li><a href="/lab6">Шестая лабораторная</a></li>
             <li><a href="/lab7">Седьмая лабораторная</a></li>
             <li><a href="/lab8/">Восьмая лабораторная</a></li>
+            <li><a href="/lab9">Девятая лабораторная</a></li>
         </ul>
     </main>
     <footer>

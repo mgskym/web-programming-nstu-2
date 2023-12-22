@@ -7,17 +7,24 @@ from lab5 import lab5
 from lab6 import lab6
 from lab7 import lab7
 from lab8 import lab8
+from lab9 import lab9
 from flask_sqlalchemy import SQLAlchemy
 from db import db
 from db.models import users
 from flask_login import LoginManager
 
 app = Flask(__name__)
+
+
 app.register_blueprint(lab1)
 app.register_blueprint(lab2)
 app.register_blueprint(lab3)
 app.register_blueprint(lab4)
 app.register_blueprint(lab5)
+app.register_blueprint(lab6)
+app.register_blueprint(lab7)
+app.register_blueprint(lab8)
+app.register_blueprint(lab9)
 
 app.secret_key = '123'
 user_db = "michael_knowledge_base_orm"
@@ -38,9 +45,5 @@ login_manager.init_app(app)
 def load_users(user_id):
     return users.query.get(int(user_id))
 
-app.register_blueprint(lab6)
-
-app.register_blueprint(lab7)
-app.register_blueprint(lab8)
 
 
